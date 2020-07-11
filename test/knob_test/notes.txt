@@ -1,0 +1,34 @@
+Hall-B (algorithm = 1 is 'Reverbs')
+--
+0 - Reverb Time (Unidirectional, 16 steps, 0.6..9s)
+1 - Pre-Delay (Uni, 8192, 0..8191 samples = 262ms)
+
+Manual says different positions for Knobs, which control:
+Delay (0.65..9.0s, default 2.6s),
+Pre-Delay (0.0..246ms, default 33ms).
+
+('a' is point down/6'clock, the 'b..p' are rotating clockwise).
+knobs_hallb_a.bin:    knob0 = 32768    knob1 = 32768 (0.0ms)
+knobs_hallb_b.bin:    knob0 = 33792    knob1 = 33792 (16.4ms)
+knobs_hallb_c.bin:    knob0 = 34816    knob1 = 34816 (32.8ms)
+knobs_hallb_d.bin:    knob0 = 35840    knob1 = 35840 (49.2ms)
+knobs_hallb_e.bin:    knob0 = 36864    knob1 = 36864 (69.5ms)
+knobs_hallb_f.bin:    knob0 = 37888    knob1 = 37888 (81.9ms)
+knobs_hallb_g.bin:    knob0 = 38912    knob1 = 38912 (98.3ms)
+knobs_hallb_h.bin:    knob0 = 39936    knob1 = 39936 (115.0ms)
+knobs_hallb_i.bin:    knob0 = 40960    knob1 = 40960 (131.0ms)
+knobs_hallb_j.bin:    knob0 = 41984    knob1 = 41984 (148.0ms)
+knobs_hallb_k.bin:    knob0 = 43008    knob1 = 43008 (164.0ms)
+knobs_hallb_l.bin:    knob0 = 44032    knob1 = 44032 (180.0ms)
+knobs_hallb_m.bin:    knob0 = 45056    knob1 = 45056 (197.0ms)
+knobs_hallb_n.bin:    knob0 = 46080    knob1 = 46080 (213.0ms)
+knobs_hallb_o.bin:    knob0 = 47104    knob1 = 47104 (229.0ms)
+knobs_hallb_p.bin:    knob0 = 48128    knob1 = 48128 (246.0ms)
+
+Unidirectional: Min 0x8000(32768), Max 0xBFFF (49151)
+PreDelay => scale is 262ms / (49151-32768) = 0.015992187
+
+knobs_hallb_a.bin:    knob1 = 32768 - 32768 = 0
+knobs_hallb_b.bin:    knob1 = 33792 - 32768 = 1024 => 16.37ms
+knobs_hallb_h.bin:    knob1 = 39936 - 32768 = 7168 => 114.63ms
+knobs_hallb_p.bin:    knob1 = 48128 - 32768 = 15360 => 245.63ms

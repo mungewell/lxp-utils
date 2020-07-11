@@ -1,0 +1,28 @@
+Container: 
+    algorithm = 2
+    knob0 = 45056
+    knob1 = 32768
+    param2 = 49150
+    param3 = 31744
+    param4 = 44032
+    param5 = 39936
+    param6 = 32768
+    param7 = 45440
+    param8 = 32768
+    param9 = 32768
+    name = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00' (total 16)
+    source = ListContainer: 
+        0
+        0
+        0
+        0
+    destination = ListContainer: 
+        255
+        255
+        255
+        255
+    scale = ListContainer: 
+        0
+        0
+        0
+        0

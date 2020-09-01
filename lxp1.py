@@ -96,6 +96,9 @@ class lxp1(object):
     Depth = (Paramtype.UNIDIR, 256, 0.25, 8)
     Rate = (Paramtype.BIONE, 32, 0, 15)
 
+    PosFB = (Paramtype.UNIDIR, 256, 0, 99)
+    GangDly = (Paramtype.UNIDIR, 256, 0, 99)
+
     def param_decode(self, value, name):
         (ptype, steps, minimum, maximum) = getattr(self, name)
 
@@ -150,7 +153,7 @@ class lxp1(object):
         if len(encode) > 1:
             packet = packet + encode
 
-        return(packet)
+        return(bytes(packet))
 
     def unpack(self, packet):
         # Unpack data 7bit to 8bit, MSBs in first byte
@@ -241,6 +244,22 @@ Algo3 = Struct(
 
     Embedded(RegCommon),
 )
+Algo4 = Struct(
+    Const(b'\x04'),
+    "PosFB" / Param(Int16ul, "PosFB"),
+    "GangDly" / Param(Int16ul, "GangDly"),
+    "FxLevel" / Param(Int16ul, "FxLevel"),
+    "RightFB" / Param(Int16ul, "RightFB"),      # Used for both L/R?
+    "LeftDly" / Param(Int16ul, "LeftDly"),
+    "RightDly" / Param(Int16ul, "RightDly"),
+    "LeftFB" / Param(Int16ul, "LeftFB"),        # Unused?
+    "HiFreqCut" / Param(Int16ul, "HiFreqCut"),
+    "Diffusion" / Param(Int16ul, "Diffusion"),
+
+    "param9" / Int16ul,
+
+    Embedded(RegCommon),
+)
 
 Register = Struct(
     "algorithm" / Byte,
@@ -267,7 +286,6 @@ Registers = Struct(
 #--------------------------------------------------
 # Simple command line implementation
 
-import hexdump
 from optparse import OptionParser
 
 def main():
@@ -279,6 +297,12 @@ def main():
     parser.add_option("-d", "--dump",
         help="dump configuration to text",
         action="store_true", dest="dump")
+    parser.add_option("-w", "--write",
+        help="write configuration back to file",
+        action="store_true", dest="write")
+    parser.add_option("-r", "--reg",
+        help="specify destination REG",
+        dest="reg")
 
     (options, args) = parser.parse_args()
 
@@ -310,27 +334,46 @@ def main():
         block = reverb.unpack(config['data']['packed_data'])
 
         if midi_type == 0 or midi_type == 1:
-            print(Register.parse(block))
+            regs = Register.parse(block)
 
-            '''
-            print(Algo3.parse(block))
+            if regs['algorithm'] == 4:
+                regs = Algo4.parse(block)
+                print(regs)
+                '''
+                # Example: Modify some parameters and rebuild
+                regs['RightFB'] = 0
+                regs['LeftDly'] = 0
+                regs['RightDly'] = 0
+                regs['Diffusion'] = 0
+                block = Algo4.build(regs)
+                config['data']['packed_data'] = reverb.pack(block)
+                '''
+            else:
+                print(regs)
 
-            name = "BassMult"
-            print(reverb.param_decode(0x4000, name))
-            print(reverb.param_decode(0x7fff, name))
-            print(reverb.param_decode(0x8000, name))
-            print(reverb.param_decode(0xBfff, name))
-
-            name = "PreDlyFb"
-            print(hex(reverb.param_encode(-99, name)))
-            print(hex(reverb.param_encode(-50, name)))
-            print(hex(reverb.param_encode(50, name)))
-            print(hex(reverb.param_encode(99, name)))
-            '''
-            
         if midi_type == 4:
             print(Registers.parse(block))
     
+    if options.write:
+        print(config)
+        if options.reg:
+            if config['midi']['type'] == 0:
+               # switch 'current' to 'register' mode
+               config['midi']['type'] = 1
+               config['data'].update({"Register":int(options.reg)})
+            else:
+               config['data']['Register'] = int(options.reg)
+
+
+        binfile = open(args[0], "wb")
+        if not binfile:
+            print("Unable to open file for writing")
+            quit(0)
+
+        if binfile:
+            binfile.write(LXP1.build(config))
+            binfile.close()
+
 if __name__ == "__main__":
     main()
 

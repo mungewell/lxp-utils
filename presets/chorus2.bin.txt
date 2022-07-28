@@ -1,28 +1,37 @@
 Container: 
-    algorithm = 5
-    knob0 = 36864
-    knob1 = 40960
-    param2 = 49151
-    param3 = 36864
-    param4 = 32768
-    param5 = 33792
-    param6 = 36864
-    param7 = 36864
-    param8 = 43008
-    param9 = 32768
-    name = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00' (total 16)
-    source = ListContainer: 
-        0
-        0
-        0
-        0
-    destination = ListContainer: 
-        255
-        255
-        255
-        255
-    scale = ListContainer: 
-        0
-        0
-        0
-        0
+    midi = Container: 
+        type = 0
+        channel = 0
+    blob = Container: 
+        data = Container: 
+            packed_length = 56
+            packed_data = b't\x05\x00\x10\x00 \x7f?*\x00\x10\x00\x00\x00\x04\x00'... (truncated, total 56)
+            packed_checksum = 5
+Container: 
+    Algorithm = b'\x05' (total 1)
+    MasterRes = 94.65010071415492
+    FineTuning = -0.49954220838674246
+    FxLevel = 100.0
+    PreDelay = 131.00799609351157
+    LoFreqCut = 19.5
+    Shimmer = 0.007500457791613257
+    Richness = 30.00183116645303
+    Slope = 3.3761826283342486
+    Tuning = -64.0
+    common = Container: 
+        name = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00' (total 16)
+        source = ListContainer: 
+            0
+            0
+            0
+            0
+        destination = ListContainer: 
+            255
+            255
+            255
+            255
+        scale = ListContainer: 
+            0
+            0
+            0
+            0

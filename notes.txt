@@ -1,4 +1,4 @@
-Reading 'Active setup' (cmd 60).
+Reading 'current setup' (Cmd 0x60).
 
 $ amidi -p hw:1,0,0 -S 'F0 06 02 30 60 00 F7'  -r temp.bin -t 1 ; hexdump -C temp.bin
 63 bytes read
@@ -9,22 +9,22 @@ $ amidi -p hw:1,0,0 -S 'F0 06 02 30 60 00 F7'  -r temp.bin -t 1 ; hexdump -C tem
 0000003f
 
 
-Reading 'One Register' settings (cmd 61), which are really user configs
-(only accessible) via midi.
+Reading 'One Register' settings (Cmd 0x61), which are the user configs and
+only accessible via midi.
 
 $ amidi -p hw:1,0,0 -S 'F0 06 02 30 61 00 F7' -t 1 -r lexicon_reg_00.bin
 $ amidi -p hw:1,0,0 -S 'F0 06 02 30 61 01 F7' -t 1 -r lexicon_reg_01.bin
 $ amidi -p hw:1,0,0 -S 'F0 06 02 30 61 02 F7' -t 1 -r lexicon_reg_02.bin
 
 
-'All Registers' can be read at once (cmd 64).
+'All Registers' can be read at once (Cmd 0x64).
 
 $ amidi -p hw:1,0,0 -S 'F0 06 02 30 64 00 F7'   -t 1 -r lexicon_reg_all.bin
 7176 bytes read
  
 
 'Parameters' are individual settings within a 'Register' and can be set/set via
-'packed' format (cmd 62), or via 'nibbles' (cmd 65).
+'packed' format (Cmd 0x62), or via 'nibbles' format (Cmd 0x65).
 
 Believed to affect the active settings... the active state can be recalled from
 a 'Register' with a 'Program Change' message, or stored to a 'Register' by holding
@@ -41,7 +41,7 @@ $ amidi -p hw:1,0,0 -S 'F0 06 02 30 65 00 F7'  -r temp.bin -t 1 ; hexdump -C tem
 0000000a
 
 
-Events (cmd 70 and 71) are for 'Store Register' and 'Recall Register'.
+Events (Cmd 0x70 and 0x71) are for 'Store Register' and 'Recall Register'.
 Not clear if these are only sent by unit when responding to 'Program Change'
 message, or whether they can trigger the action.
 
@@ -100,7 +100,7 @@ or 20 + 16 + 12 + 1 = 49 <- same as unpacked Register data
 
 Algorithm Parameters
 
-Reverbs (Hall/Rooms = 1, Plates = 2)
+Reverbs (Hall/Rooms, Pid= 1 and Plates, Pid= 2)
 --
 0 - Reverb Time (Unidirectional, 16 steps, 0.6..9s)
 1 - Pre-Delay (Uni, 8192, 0..8191 samples = 262ms)
@@ -113,7 +113,7 @@ Reverbs (Hall/Rooms = 1, Plates = 2)
 
 LXP5 manual notes that HiCut has a logrithmic scale
 
-Chorus1 (Stereo Flange = 3)
+Chorus1 (Stereo Flange, Pid = 3)
 --
 0 - Negative Feedback (Uni, 256, 0..99%)
 1 - Depth* (Uni, 256 or 124?, 0.25..8ms)
@@ -125,7 +125,7 @@ Chorus1 (Stereo Flange = 3)
 7 - Left Delay (Uni, 128, 0..1s)
 8 - Rate (Uni, 16 or 32?, 0..1:1..15)
 
-Delay2 (4tap bound delay = 4)
+Delay2 (4tap bound delay, Pid = 4)
 --
 0 - Positive Feedback (Uni, 256, 0..99%)
 1 - Ganged-Delay (Uni, 256)
@@ -138,7 +138,7 @@ Delay2 (4tap bound delay = 4)
 8 - Diffusion (Uni, 256, 0..100)
 (where is '6'?? Did they merge left/right feeback?)
 
-Chorus2 (Chromatic Resonator = 5)
+Chorus2 (Chromatic Resonator, Pid = 5)
 --
 0?- Master Resonance (Bi, 64, 93..99%)
 1?- Fine Tuning (,, -8..+7 semitones)
@@ -152,18 +152,20 @@ Chorus2 (Chromatic Resonator = 5)
 9 - Tuning (Bi, 128, -63..+63 1/8th semitone)
 (where is '0' and '1'??)
 
-Inverse Room (6)
+Inverse Room (Pid = 6)
 --
 0 - Size (Bi, 512 or 32?, 1..32)
+1
 2 - Effects Level (Uni, 256, 0..100%)
-4 - Hi Freq Cut (Uni, 16)
+3
 4 - Hi Freq Cut (Uni, 16, 321Hz..13.8KHz)
 5 - Slope (Uni, 32 or 16, 1..16)
 6 - PreDly Feedback (Bi, 512)
 7 - Diffusion (Uni, 256)
 8 - Pre-Delay (Uni, 8192)
+(where is 1&3?)
 
-Gated Reverd (7)
+Gated Reverd (Pid = 7)
 --
 0 - Gate Time (Uni, 32, 150..390ms)
 2 - Effects Level (Uni, 256, 0..100%)
@@ -174,7 +176,7 @@ Gated Reverd (7)
 8 - Pre-Delay (Uni, 8192, 0..8191sample=262ms)
 (where is 1&3?)
 
-Delay1 (6-Voice Chorus and Echo = 8)
+Delay1 (6-Voice Chorus and Echo, Pid = 8)
 --
 0 - Feedback (Uni, 256, 0..94%)
 1 - Group Delay (Uni, 256, ????)
@@ -183,5 +185,5 @@ Delay1 (6-Voice Chorus and Echo = 8)
 4 - Delay 2 Spread (Uni, 128, 0..1s)
 5 - Delay 3 Spread (Uni, 128, 0..1s)
 6 - Delay 3 Feedback (Bi, 512)
-7 - Diffusion (Uni, 256)
-8 - Rate (Uni, 16)
+7 - Diffusion (Uni, 256, 0..100)
+8 - Rate (Uni, 16, 0..15)

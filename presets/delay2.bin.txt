@@ -1,28 +1,38 @@
 Container: 
-    algorithm = 4
-    knob0 = 32768
-    knob1 = 43008
-    param2 = 49150
-    param3 = 36864
-    param4 = 0
-    param5 = 0
-    param6 = 32768
-    param7 = 47104
-    param8 = 34816
+    midi = Container: 
+        type = 0
+        channel = 0
+    blob = Container: 
+        data = Container: 
+            packed_length = 56
+            packed_data = b't\x04\x00\x00\x00(~?\x02\x00\x10\x00\x00\x00\x00\x00'... (truncated, total 56)
+            packed_checksum = 71
+Container: 
+    Algorithm = b'\x04' (total 1)
+    PosFB = 0.0
+    GangDly = 61.878776780809375
+    FxLevel = 99.99389611182323
+    RightFB = 24.75151071232375
+    LeftDly = -2.0000610388817677
+    RightDly = -2.0000610388817677
+    LeftFB = 0.0
+    HiFreqCut = 12115.844900201428
+    Diffusion = 12.500762986022096
     param9 = 32768
-    name = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00' (total 16)
-    source = ListContainer: 
-        0
-        0
-        0
-        0
-    destination = ListContainer: 
-        255
-        255
-        255
-        255
-    scale = ListContainer: 
-        0
-        0
-        0
-        0
+    common = Container: 
+        name = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00' (total 16)
+        source = ListContainer: 
+            0
+            0
+            0
+            0
+        destination = ListContainer: 
+            255
+            255
+            255
+            255
+        scale = ListContainer: 
+            0
+            0
+            0
+            0

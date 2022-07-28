@@ -1,28 +1,38 @@
 Container: 
-    algorithm = 2
-    knob0 = 45056
-    knob1 = 32768
-    param2 = 49150
-    param3 = 31744
-    param4 = 44032
-    param5 = 39936
-    param6 = 32768
-    param7 = 45440
+    midi = Container: 
+        type = 0
+        channel = 0
+    blob = Container: 
+        data = Container: 
+            packed_length = 56
+            packed_data = b't\x02\x000\x00\x00~?(\x00|\x00,\x00\x1c\x00'... (truncated, total 56)
+            packed_checksum = 26
+Container: 
+    Algorithm = b'\x02' (total 1)
+    ReverbTime = 6.900384544955136
+    PreDelay = 0.0
+    FxLevel = 99.99389611182323
+    BassMult = 0.9562900567661601
+    HiFreqCut = 9588.37813587255
+    Size = 35.56418238417872
+    PreDlyFbk = 0.0
+    Diffusion = 77.34847097601173
     param8 = 32768
     param9 = 32768
-    name = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00' (total 16)
-    source = ListContainer: 
-        0
-        0
-        0
-        0
-    destination = ListContainer: 
-        255
-        255
-        255
-        255
-    scale = ListContainer: 
-        0
-        0
-        0
-        0
+    common = Container: 
+        name = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00' (total 16)
+        source = ListContainer: 
+            0
+            0
+            0
+            0
+        destination = ListContainer: 
+            255
+            255
+            255
+            255
+        scale = ListContainer: 
+            0
+            0
+            0
+            0

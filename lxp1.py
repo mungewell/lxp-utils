@@ -3,7 +3,7 @@
 # Script decode/encode SysEx from/for Lexicon LXP-1
 # (c) Simon Wood, 11th July 2020
 
-# Defines SysEx format using Construct (v2.9)
+# Defines SysEx format using Construct (v2.10)
 # https://github.com/construct/construct
 
 from construct import *
@@ -43,17 +43,17 @@ LXP1 = Struct(
         "channel" / Default(BitsInteger(4), 0),
     ),
 
-    "data" / Switch(this.midi.type, 
+    "blob" / Switch(this.midi.type,
     {
         0 : "current" / Struct(
-            Embedded(ShortPacked),
+            "data" / ShortPacked,
         ),
         1 : "register" / Struct(
             "Register" / Byte,
-            Embedded(ShortPacked),
+            "data" / ShortPacked,
         ),
         4 : "allregs" / Struct(
-            Embedded(LongPacked),
+            "data" / LongPacked,
         ),
     }),
 
@@ -77,27 +77,44 @@ class lxp1(object):
         BIDIR = 2
         BIONE = 3
 
-    ReverbTime = (Paramtype.UNIDIR, 16, 0.6, 9.0)
-    PreDelay = (Paramtype.UNIDIR, 8192, 0, 262.0)
-    FxLevel = (Paramtype.UNIDIR, 256, 0, 100)
+    # Algo1&2
+    ReverbTime = (Paramtype.UNIDIR, 16, 0.6, 9.0)           # s
+    PreDelay = (Paramtype.UNIDIR, 8192, 0, 262.0)           # ms
+    FxLevel = (Paramtype.UNIDIR, 256, 0, 100)               # %
     BassMult = (Paramtype.BIONE, 32, 0.3, 2.5)
-    HiFreqCut = (Paramtype.UNIDIR, 16, 321, 13800)
-    Size = (Paramtype.UNIDIR, 16, 8, 71)
-    PreDlyFb = (Paramtype.BIDIR, 512, 0, 99)
+    HiFreqCut = (Paramtype.UNIDIR, 16, 321, 13800)          # Hz
+    Size = (Paramtype.UNIDIR, 16, 8, 71)                    # m
+    Feedback = (Paramtype.BIDIR, 512, 0, 99)                # %
     Diffusion = (Paramtype.UNIDIR, 256, 0, 100)
 
-    NegFB = (Paramtype.UNIDIR, 256, 0, 99)
-    Depth = (Paramtype.UNIDIR, 256, 0.25, 8)
-    RightFB = (Paramtype.BIDIR, 512, 0, 99)
-    RightDly = (Paramtype.UNIDIR, 128, 0, 1)
+    # Algo3
+    Feedback3 = (Paramtype.UNIDIR, 256, 0, 99)              # %
+    Depth = (Paramtype.UNIDIR, 256, 0.25, 8)                # ms
+    Delay = (Paramtype.UNIDIR, 128, 0, 1)                   # s
     Shape = (Paramtype.UNIDIR, 8, 0, 7)
-    LeftFB = (Paramtype.BIDIR, 512, 0, 99)
-    LeftDly = (Paramtype.UNIDIR, 128, 0, 1)
-    Depth = (Paramtype.UNIDIR, 256, 0.25, 8)
     Rate = (Paramtype.BIONE, 32, 0, 15)
 
-    PosFB = (Paramtype.UNIDIR, 256, 0, 99)
-    GangDly = (Paramtype.UNIDIR, 256, 0, 99)
+    # Algo5
+    MasterRes = (Paramtype.UNIDIR, 64, 93.0, 99.6)          # %
+    FineTuning = (Paramtype.UNIDIR, 16, -8, 7)              # semitone
+    PreDelay5 = (Paramtype.UNIDIR, 2730, 0, 524.0)          # ms
+    LoFreqCut = (Paramtype.UNIDIR, 256, 19.5, 13800)        # Hz
+    Shimmer = (Paramtype.UNIDIR, 16, 0, 0.12)               # s
+    MasterResFB = (Paramtype.BIDIR, 64, 87.0, 99.0)         # %
+    Richness = (Paramtype.UNIDIR, 16, 0, 120)               # cents
+    Slope = (Paramtype.UNIDIR, 32, -16, 15)
+    Tuning = (Paramtype.UNIDIR, 128, -64, 63)               # 1/8 semitone
+
+    # Algo6
+    Size6 = (Paramtype.BIDIR, 32, 1, 32)
+
+    # Algo7
+    Slope7 = (Paramtype.UNIDIR, 16, 1, 16)
+
+    # Algo8
+    Feedback8 = (Paramtype.UNIDIR, 256, 0.0, 94.0)          # %
+    Spread = (Paramtype.UNIDIR, 128, 0.0, 1.0)              # s
+    Rate = (Paramtype.UNIDIR, 16, 1, 16)
 
     def param_decode(self, value, name):
         (ptype, steps, minimum, maximum) = getattr(self, name)
@@ -197,68 +214,131 @@ RegCommon = Struct(
 )
 
 Algo1 = Struct(
-    Const(b'\x01'),
+    "Algorithm" / Const(b'\x01'),
+
     "ReverbTime" / Param(Int16ul, "ReverbTime"),
     "PreDelay" / Param(Int16ul, "PreDelay"),
     "FxLevel" / Param(Int16ul, "FxLevel"),
     "BassMult" / Param(Int16ul, "BassMult"),
     "HiFreqCut" / Param(Int16ul, "HiFreqCut"),
     "Size" / Param(Int16ul, "Size"),
-    "PreDlyFb" / Param(Int16ul, "PreDlyFb"),
+    "PreDlyFb" / Param(Int16ul, "Feedback"),
     "Diffusion" / Param(Int16ul, "Diffusion"),
-
     "param8" / Int16ul,
     "param9" / Int16ul,
 
-    Embedded(RegCommon),
+    "common" / RegCommon,
 )
 Algo2 = Struct(
-    Const(b'\x02'),
+    "Algorithm" / Const(b'\x02'),
+
     "ReverbTime" / Param(Int16ul, "ReverbTime"),
     "PreDelay" / Param(Int16ul, "PreDelay"),
     "FxLevel" / Param(Int16ul, "FxLevel"),
     "BassMult" / Param(Int16ul, "BassMult"),
     "HiFreqCut" / Param(Int16ul, "HiFreqCut"),
     "Size" / Param(Int16ul, "Size"),
-    "PreDlyFb" / Param(Int16ul, "PreDlyFb"),
+    "PreDlyFbk" / Param(Int16ul, "Feedback"),
     "Diffusion" / Param(Int16ul, "Diffusion"),
-
     "param8" / Int16ul,
     "param9" / Int16ul,
 
-    Embedded(RegCommon),
+    "common" / RegCommon,
 )
 Algo3 = Struct(
-    Const(b'\x03'),
-    "NegFB" / Param(Int16ul, "NegFB"),
+    "Algorithm" / Const(b'\x03'),
+
+    "NegFB" / Param(Int16ul, "Feedback3"),
     "Depth" / Param(Int16ul, "Depth"),
     "FxLevel" / Param(Int16ul, "FxLevel"),
-    "RightFB" / Param(Int16ul, "RightFB"),
-    "RigthDly" / Param(Int16ul, "RightDly"),
+    "RightFB" / Param(Int16ul, "Feedback"),
+    "RigthDly" / Param(Int16ul, "Delay"),
     "Shape" / Param(Int16ul, "Shape"),
-    "LeftFB" / Param(Int16ul, "LeftFB"),
-    "LeftDly" / Param(Int16ul, "LeftDly"),
+    "LeftFB" / Param(Int16ul, "Feedback"),
+    "LeftDly" / Param(Int16ul, "Delay"),
     "Rate" / Param(Int16ul, "Rate"),
-
     "param9" / Int16ul,
 
-    Embedded(RegCommon),
+    "common" / RegCommon,
 )
 Algo4 = Struct(
-    Const(b'\x04'),
-    "PosFB" / Param(Int16ul, "PosFB"),
-    "GangDly" / Param(Int16ul, "GangDly"),
+    "Algorithm" / Const(b'\x04'),
+
+    "PosFB" / Param(Int16ul, "Feedback3"),
+    "GangDly" / Param(Int16ul, "Feedback3"),
     "FxLevel" / Param(Int16ul, "FxLevel"),
-    "RightFB" / Param(Int16ul, "RightFB"),      # Used for both L/R?
-    "LeftDly" / Param(Int16ul, "LeftDly"),
-    "RightDly" / Param(Int16ul, "RightDly"),
-    "LeftFB" / Param(Int16ul, "LeftFB"),        # Unused?
+    "RightFB" / Param(Int16ul, "Feedback"),      # Used for both L/R?
+    "LeftDly" / Param(Int16ul, "Delay"),
+    "RightDly" / Param(Int16ul, "Delay"),
+    "LeftFB" / Param(Int16ul, "Feedback"),        # Unused?
     "HiFreqCut" / Param(Int16ul, "HiFreqCut"),
     "Diffusion" / Param(Int16ul, "Diffusion"),
-
     "param9" / Int16ul,
 
-    Embedded(RegCommon),
+    "common" / RegCommon,
+)
+Algo5 = Struct(
+    "Algorithm" / Const(b'\x05'),
+
+    "MasterRes" / Param(Int16ul, "MasterRes"),
+    "FineTuning" / Param(Int16ul, "FineTuning"),
+    "FxLevel" / Param(Int16ul, "FxLevel"),
+    "PreDelay" / Param(Int16ul, "PreDelay5"),
+    "LoFreqCut" / Param(Int16ul, "LoFreqCut"),
+    "Shimmer" / Param(Int16ul, "Shimmer"),
+    "MasterRes" / Param(Int16ul, "MasterRes"),
+    "Richness" / Param(Int16ul, "Richness"),
+    "Slope" / Param(Int16ul, "Slope"),
+    "Tuning" / Param(Int16ul, "Tuning"),
+
+    "common" / RegCommon,
+)
+Algo6 = Struct(
+    "Algorithm" / Const(b'\x06'),
+
+    "Size" / Param(Int16ul, "Size6"),
+    "knob1" / Int16ul,
+    "FxLevel" / Param(Int16ul, "FxLevel"),
+    "param3" / Int16ul,
+    "HiFreqCut" / Param(Int16ul, "HiFreqCut"),
+    "Slope" / Param(Int16ul, "Slope"),
+    "PreDlyFbk" / Param(Int16ul, "Feedback"),
+    "Diffusion" / Param(Int16ul, "Diffusion"),
+    "PreDelay" / Param(Int16ul, "PreDelay"),
+
+    "common" / RegCommon,
+)
+Algo7 = Struct(
+    "Algorithm" / Const(b'\x07'),
+
+    "knob1" / Int16ul,
+    "FxLevel" / Param(Int16ul, "FxLevel"),
+    "param3" / Int16ul,
+    "HiFreqCut" / Param(Int16ul, "HiFreqCut"),
+    "Slope" / Param(Int16ul, "Slope7"),
+    "PreDlyFb" / Param(Int16ul, "Feedback"),
+    "Diffusion" / Param(Int16ul, "Diffusion"),
+    "PreDelay" / Param(Int16ul, "PreDelay"),
+    "param9" / Int16ul,
+
+    "common" / RegCommon,
+)
+Algo8 = Struct(
+    "Algorithm" / Const(b'\x08'),
+
+    "Feedback" / Param(Int16ul, "Feedback8"),
+    "knob2" / Int16ul,
+    #"GroupDelay" / Param(Int16ul, "GroupDelay"),   # this selects from list of values
+    "FxLevel" / Param(Int16ul, "FxLevel"),
+    "HiFreqCut" / Param(Int16ul, "HiFreqCut"),
+    "Delay2Spr" / Param(Int16ul, "Spread"),
+    "Delay3Spr" / Param(Int16ul, "Spread"),
+    "Delay3Fbk" / Param(Int16ul, "Feedback"),
+    "Diffusion" / Param(Int16ul, "Diffusion"),
+    "Rate" / Param(Int16ul, "Rate"),
+    "param9" / Int16ul,
+
+    "common" / RegCommon,
 )
 
 Register = Struct(
@@ -276,7 +356,7 @@ Register = Struct(
     "param8" / Int16ul,
     "param9" / Int16ul,
 
-    Embedded(RegCommon),
+    "common" / RegCommon,
 )
 
 Registers = Struct(
@@ -287,6 +367,28 @@ Registers = Struct(
 # Simple command line implementation
 
 from optparse import OptionParser
+
+def decode_regs(block):
+    regs = Register.parse(block)
+
+    if regs['algorithm'] == 1:
+        regs = Algo1.parse(block)
+    elif regs['algorithm'] == 2:
+        regs = Algo2.parse(block)
+    elif regs['algorithm'] == 3:
+        regs = Algo3.parse(block)
+    elif regs['algorithm'] == 4:
+        regs = Algo4.parse(block)
+    elif regs['algorithm'] == 5:
+        regs = Algo5.parse(block)
+    elif regs['algorithm'] == 6:
+        regs = Algo6.parse(block)
+    elif regs['algorithm'] == 7:
+        regs = Algo7.parse(block)
+    elif regs['algorithm'] == 8:
+        regs = Algo8.parse(block)
+
+    return regs
 
 def main():
     usage = "usage: %prog [options] FILENAME"
@@ -331,39 +433,34 @@ def main():
         midi_type = config['midi']['type']
     
         reverb = lxp1()
-        block = reverb.unpack(config['data']['packed_data'])
+        block = reverb.unpack(config['blob']['data']['packed_data'])
 
         if midi_type == 0 or midi_type == 1:
-            regs = Register.parse(block)
-
-            if regs['algorithm'] == 4:
-                regs = Algo4.parse(block)
-                print(regs)
-                '''
-                # Example: Modify some parameters and rebuild
-                regs['RightFB'] = 0
-                regs['LeftDly'] = 0
-                regs['RightDly'] = 0
-                regs['Diffusion'] = 0
-                block = Algo4.build(regs)
-                config['data']['packed_data'] = reverb.pack(block)
-                '''
-            else:
-                print(regs)
+            regs = decode_regs(block)
+            print(regs)
 
         if midi_type == 4:
-            print(Registers.parse(block))
-    
+            count = 0
+            while block:
+                print("User Register", count)
+                regs = decode_regs(block)
+                print(regs)
+
+                block = block[49:]
+                count = count + 1
+
+
     if options.write:
         print(config)
         if options.reg:
             if config['midi']['type'] == 0:
                # switch 'current' to 'register' mode
                config['midi']['type'] = 1
-               config['data'].update({"Register":int(options.reg)})
+               config['blob']['data'].update({"Register":int(options.reg)})
             else:
-               config['data']['Register'] = int(options.reg)
+               config['blob']['data']['Register'] = int(options.reg)
 
+        # assume the settings are changed, need to repack
 
         binfile = open(args[0], "wb")
         if not binfile:

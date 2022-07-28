@@ -1,13 +1,4 @@
 Container: 
-    midi = Container: 
-        type = 0
-        channel = 0
-    blob = Container: 
-        data = Container: 
-            packed_length = 56
-            packed_data = b't\x06\x00\x08\x00\x00\x7f?:\x00\x00\x000\x7f?\x00'... (truncated, total 56)
-            packed_checksum = 63
-Container: 
     Algorithm = b'\x06' (total 1)
     Size = 4.87523652566685
     knob1 = 32768

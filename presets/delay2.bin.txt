@@ -1,13 +1,4 @@
 Container: 
-    midi = Container: 
-        type = 0
-        channel = 0
-    blob = Container: 
-        data = Container: 
-            packed_length = 56
-            packed_data = b't\x04\x00\x00\x00(~?\x02\x00\x10\x00\x00\x00\x00\x00'... (truncated, total 56)
-            packed_checksum = 71
-Container: 
     Algorithm = b'\x04' (total 1)
     PosFB = 0.0
     GangDly = 61.878776780809375

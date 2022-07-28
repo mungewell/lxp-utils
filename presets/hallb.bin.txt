@@ -1,13 +1,4 @@
 Container: 
-    midi = Container: 
-        type = 0
-        channel = 0
-    blob = Container: 
-        data = Container: 
-            packed_length = 56
-            packed_data = b't\x01\x00,\x00\x08~?(\x00p\x000\x008\x00'... (truncated, total 56)
-            packed_checksum = 46
-Container: 
     Algorithm = b'\x01' (total 1)
     ReverbTime = 6.375352499542208
     PreDelay = 32.75199902337789

@@ -1,13 +1,4 @@
 Container: 
-    midi = Container: 
-        type = 0
-        channel = 0
-    blob = Container: 
-        data = Container: 
-            packed_length = 56
-            packed_data = b't\x05\x00\x10\x00 \x7f?*\x00\x10\x00\x00\x00\x04\x00'... (truncated, total 56)
-            packed_checksum = 5
-Container: 
     Algorithm = b'\x05' (total 1)
     MasterRes = 94.65010071415492
     FineTuning = -0.49954220838674246

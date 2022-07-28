@@ -1,13 +1,4 @@
 Container: 
-    midi = Container: 
-        type = 0
-        channel = 0
-    blob = Container: 
-        data = Container: 
-            packed_length = 56
-            packed_data = b't\x08\x00\x00\x000\x7f?j\x008\x00\x00\x00\x00\x00'... (truncated, total 56)
-            packed_checksum = 109
-Container: 
     Algorithm = b'\x08' (total 1)
     Feedback = 0.0
     knob2 = 45056

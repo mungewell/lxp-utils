@@ -1,13 +1,4 @@
 Container: 
-    midi = Container: 
-        type = 0
-        channel = 0
-    blob = Container: 
-        data = Container: 
-            packed_length = 56
-            packed_data = b't\x07\x00\x08\x00\x00\x7f?*\x00\x00\x000\x00<\x00'... (truncated, total 56)
-            packed_checksum = 39
-Container: 
     Algorithm = b'\x07' (total 1)
     knob1 = 34816
     FxLevel = 0.0

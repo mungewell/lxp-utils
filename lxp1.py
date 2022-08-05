@@ -213,7 +213,7 @@ RegCommon = Struct(
     "scale" / Array(4, Byte),
 )
 
-Algo1 = Struct(
+Algo1 = Struct(     # Rooms and Halls
     "Algorithm" / Const(b'\x01'),
 
     "ReverbTime" / Param(Int16ul, "ReverbTime"),
@@ -229,7 +229,7 @@ Algo1 = Struct(
 
     "common" / RegCommon,
 )
-Algo2 = Struct(
+Algo2 = Struct(     # Plates
     "Algorithm" / Const(b'\x02'),
 
     "ReverbTime" / Param(Int16ul, "ReverbTime"),
@@ -245,7 +245,7 @@ Algo2 = Struct(
 
     "common" / RegCommon,
 )
-Algo3 = Struct(
+Algo3 = Struct(     # Chorus1 (Flange)
     "Algorithm" / Const(b'\x03'),
 
     "NegFB" / Param(Int16ul, "Feedback3"),
@@ -261,7 +261,7 @@ Algo3 = Struct(
 
     "common" / RegCommon,
 )
-Algo4 = Struct(
+Algo4 = Struct(     # Delay2 (4-tap)
     "Algorithm" / Const(b'\x04'),
 
     "PosFB" / Param(Int16ul, "Feedback3"),
@@ -277,7 +277,7 @@ Algo4 = Struct(
 
     "common" / RegCommon,
 )
-Algo5 = Struct(
+Algo5 = Struct(     # Chorus2 (Resonator)
     "Algorithm" / Const(b'\x05'),
 
     "MasterRes" / Param(Int16ul, "MasterRes"),
@@ -293,7 +293,7 @@ Algo5 = Struct(
 
     "common" / RegCommon,
 )
-Algo6 = Struct(
+Algo6 = Struct(     # Inverse
     "Algorithm" / Const(b'\x06'),
 
     "Size" / Param(Int16ul, "Size6"),
@@ -305,25 +305,27 @@ Algo6 = Struct(
     "PreDlyFbk" / Param(Int16ul, "Feedback"),
     "Diffusion" / Param(Int16ul, "Diffusion"),
     "PreDelay" / Param(Int16ul, "PreDelay"),
+    "param9" / Int16ul,
 
     "common" / RegCommon,
 )
-Algo7 = Struct(
+Algo7 = Struct(     # Gate
     "Algorithm" / Const(b'\x07'),
 
-    "knob1" / Int16ul,
+    "ReverbTime" / Param(Int16ul, "ReverbTime"),
+    "PreDelay" / Param(Int16ul, "PreDelay"),
     "FxLevel" / Param(Int16ul, "FxLevel"),
     "param3" / Int16ul,
     "HiFreqCut" / Param(Int16ul, "HiFreqCut"),
     "Slope" / Param(Int16ul, "Slope7"),
     "PreDlyFb" / Param(Int16ul, "Feedback"),
     "Diffusion" / Param(Int16ul, "Diffusion"),
-    "PreDelay" / Param(Int16ul, "PreDelay"),
+    "param8" / Int16ul,
     "param9" / Int16ul,
 
     "common" / RegCommon,
 )
-Algo8 = Struct(
+Algo8 = Struct(     # Delay1
     "Algorithm" / Const(b'\x08'),
 
     "Feedback" / Param(Int16ul, "Feedback8"),

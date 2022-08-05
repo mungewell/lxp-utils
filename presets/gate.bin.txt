@@ -1,28 +1,29 @@
 Container: 
     Algorithm = b'\x07' (total 1)
-    knob1 = 34816
-    FxLevel = 0.0
-    param3 = 49151
-    HiFreqCut = 321.0
-    Slope = 12.250686687419886
-    PreDlyFb = 92.81816517121406
-    Diffusion = 0.0
-    PreDelay = 229.26399316364524
+    ReverbTime = 1.6500640908258561
+    PreDelay = 0.0
+    FxLevel = 100.0
+    param3 = 32768
+    HiFreqCut = 10430.86705731551
+    Slope = 15.063358359274858
+    PreDlyFb = 0.0
+    Diffusion = 87.50534090215467
+    param8 = 32768
     param9 = 32768
     common = Container: 
-        name = b'\x00\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00' (total 16)
+        name = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00' (total 16)
         source = ListContainer: 
             0
             0
             0
             0
         destination = ListContainer: 
-            0
-            0
+            255
+            255
             255
             255
         scale = ListContainer: 
-            255
-            255
+            0
+            0
             0
             0

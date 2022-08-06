@@ -1,7 +1,7 @@
 Container: 
     Algorithm = b'\x08' (total 1)
     Feedback = 0.0
-    knob2 = 45056
+    GroupDelay = 0.2790170298480132
     FxLevel = 100.0
     HiFreqCut = 12115.844900201428
     Delay2Spr = 0.0

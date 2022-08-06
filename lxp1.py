@@ -113,6 +113,7 @@ class lxp1(object):
 
     # Algo8
     Feedback8 = (Paramtype.UNIDIR, 256, 0.0, 94.0)          # %
+    GroupDelay = (Paramtype.UNIDIR, 256, 0.0, 0.372)        # s
     Spread = (Paramtype.UNIDIR, 128, 0.0, 1.0)              # s
     Rate = (Paramtype.UNIDIR, 16, 1, 16)
 
@@ -318,7 +319,7 @@ Algo7 = Struct(     # Gate
     "param3" / Int16ul,
     "HiFreqCut" / Param(Int16ul, "HiFreqCut"),
     "Slope" / Param(Int16ul, "Slope7"),
-    "PreDlyFb" / Param(Int16ul, "Feedback"),
+    "PreDlyFbk" / Param(Int16ul, "Feedback"),
     "Diffusion" / Param(Int16ul, "Diffusion"),
     "param8" / Int16ul,
     "param9" / Int16ul,
@@ -329,8 +330,7 @@ Algo8 = Struct(     # Delay1
     "Algorithm" / Const(b'\x08'),
 
     "Feedback" / Param(Int16ul, "Feedback8"),
-    "knob2" / Int16ul,
-    #"GroupDelay" / Param(Int16ul, "GroupDelay"),   # this selects from list of values
+    "GroupDelay" / Param(Int16ul, "GroupDelay"),
     "FxLevel" / Param(Int16ul, "FxLevel"),
     "HiFreqCut" / Param(Int16ul, "HiFreqCut"),
     "Delay2Spr" / Param(Int16ul, "Spread"),

@@ -1,0 +1,25 @@
+http://web.archive.org/web/20051104061735/http://www.lexiconpro.com/support/product-faq-details.asp?ID=9
+
+How do I clear memory in the LXP-5?
+
+Warning! This will erase all user register and patch information.
+
+    Unplug the LXP-5 power pack from the AC outlet.
+    Hold the LEARN button in and plug the power pack back into the AC outlet, then release the LEARN button.
+    Turn the FUNCTION knob to EDIT A.
+    Turn the SELECT knob to MIN.
+    Turn the ADJUST knob to MIN.
+    Press and release the LEARN button once. The LEARN LED should blink (RED) once.
+    Turn the FUNCTION knob to BYPASS.
+    Turn the SELECT knob to 2.
+    Turn the ADJUST knob to 2.
+    Press and release the LEARN button once. The LEARN LED should blink (RED) once.
+    Turn the FUNCTION knob to EDIT C.
+    Turn the SELECT knob to 2.
+    Turn the ADJUST knob to 2.
+    Press and release the LEARN button once. The LEARN LED should blink (RED) once.
+    Press and release the LEARN button once again. The LEARN LED should blink (RED) steadily. This indicates that the memory has been cleared properly.
+    Note: If the LEARN LED and the Overload LED should blink in an alternate pattern, do not be alarmed. This is only an indication that the clear memory sequence was incorrect. If this happens, repeat steps 1-15.
+    Turn the FUNCTION knob to the Pitch Preset.
+    Press and release the LEARN button. This will exit the clear memory routine. The LEARN LED should begin to blink (GREEN).
+

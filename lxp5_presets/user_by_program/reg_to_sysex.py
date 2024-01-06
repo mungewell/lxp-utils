@@ -59,7 +59,7 @@ regfile = Regfile.parse(data)
 # itterate through presets
 count = 0 
 for preset in regfile["Presets"]:
-    name = "preset_" + "{:02x}".format(count) + ".bin"
+    name = "preset_" + "{:02x}".format(count) + ".sysex"
     f = open(name, "wb")
 
     # sequentially save as different programs

@@ -129,7 +129,7 @@ class lxp1(object):
             else:
                 return(minimum + (scale2 * (value - 0x4000)))
 
-        scale = (maximum - minimum) / (0xBFFF - 0x8000)
+        scale = (maximum - minimum) / (0xBC00 - 0x8000)
         if value >= 0x8000:
             return(minimum + (scale * (value - 0x8000)))
         else:
@@ -147,7 +147,7 @@ class lxp1(object):
             else:
                 return(int(0x4000 + ((value - minimum) / scale2)))
 
-        scale = (maximum - minimum) / (0xBFFF - 0x8000)
+        scale = (maximum - minimum) / (0xBC00 - 0x8000)
         if value >= minimum:
             return(int(0x8000 + ((value - minimum) / scale)))
         else:
@@ -372,6 +372,7 @@ from optparse import OptionParser
 
 def decode_regs(block):
     regs = Register.parse(block)
+    print(regs)
 
     if regs['algorithm'] == 1:
         regs = Algo1.parse(block)

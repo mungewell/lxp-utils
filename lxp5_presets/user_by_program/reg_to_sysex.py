@@ -35,7 +35,7 @@ Sysex = Struct(
 )
 
 Regfile = Struct(
-    Padding(0x85),
+    Padding(0x86),
     Presets= Array(128, Struct(
         "data" / Bytes(57),
     )),

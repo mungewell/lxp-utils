@@ -1,0 +1,64 @@
+Container: 
+    midi = Container: 
+        type = 1
+        channel = 0
+    blob = Container: 
+        Register = 68
+        data = Container: 
+            packed_length = 57
+            packed_data = b'\x02\x01\x00"\x0e@C\x06\x00\x03\x00B\x0b\x00\x0c\x19'... (truncated, total 57)
+            algo = Container: 
+                algo = (enum) pitch_delay 2
+            microcode = Container: 
+                Delay_1_Coarse = 1
+                Delay_1_Fine = 0
+                Feedback_1 = 34
+                Delay_2_Coarse = 14
+                Delay_2_Fine = 64
+                Feedback_2 = 67
+                Delay_3_Coarse = 6
+                Delay_3_Fine = 0
+                Pitch_Base/Select = 3
+                Pitch_Interval = 0
+                Pitch_Adjust = 66
+                Decay_Time = 11
+                Treble_Decay = 0
+                Bass_Multiply = 12
+                Size = 25
+                Diffusion = 0
+                High_Cut_Filter = 15
+                Low_Cut_Filter = 0
+                Reverb_Balance = 34
+                Output_Balance = 59
+                Output_Level = 127
+                Input_Level = 75
+                LFO_Rate = 42
+            name = 'After Pitch' (total 11)
+            reserved = 32
+            knob_dest = 5
+            patches = ListContainer: 
+                Container: 
+                    source = 66
+                    thres = 0
+                    dest = 10
+                    scale = 126
+                    offset = 127
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 22
+                    scale = 13
+                    offset = 0
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 6
+                    scale = 64
+                    offset = 0
+            packed_checksum = 110

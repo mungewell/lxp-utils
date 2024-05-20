@@ -1,0 +1,64 @@
+Container: 
+    midi = Container: 
+        type = 1
+        channel = 0
+    blob = Container: 
+        Register = 52
+        data = Container: 
+            packed_length = 57
+            packed_data = b'\x02\x01\x00\x00a\x00UO"\x02\x0c4\x08\t\x13)'... (truncated, total 57)
+            algo = Container: 
+                algo = (enum) pitch_delay 2
+            microcode = Container: 
+                Delay_1_Coarse = 1
+                Delay_1_Fine = 0
+                Feedback_1 = 0
+                Delay_2_Coarse = 97
+                Delay_2_Fine = 0
+                Feedback_2 = 85
+                Delay_3_Coarse = 79
+                Delay_3_Fine = 34
+                Pitch_Base/Select = 2
+                Pitch_Interval = 12
+                Pitch_Adjust = 52
+                Decay_Time = 8
+                Treble_Decay = 9
+                Bass_Multiply = 19
+                Size = 41
+                Diffusion = 73
+                High_Cut_Filter = 15
+                Low_Cut_Filter = 0
+                Reverb_Balance = 22
+                Output_Balance = 64
+                Output_Level = 127
+                Input_Level = 95
+                LFO_Rate = 42
+            name = 'Slow Fall  ' (total 11)
+            reserved = 0
+            knob_dest = 7
+            patches = ListContainer: 
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 3
+                    scale = 108
+                    offset = 117
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 5
+                    scale = 35
+                    offset = 18
+                Container: 
+                    source = 69
+                    thres = 1
+                    dest = 11
+                    scale = 80
+                    offset = 104
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 17
+                    scale = 3
+                    offset = 1
+            packed_checksum = 5

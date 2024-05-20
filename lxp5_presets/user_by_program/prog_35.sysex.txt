@@ -1,0 +1,64 @@
+Container: 
+    midi = Container: 
+        type = 1
+        channel = 0
+    blob = Container: 
+        Register = 53
+        data = Container: 
+            packed_length = 57
+            packed_data = b'\x02\x00\x00\x00\x1a\x00\x00\x1f\x00\x02#@\x02\t\x13)'... (truncated, total 57)
+            algo = Container: 
+                algo = (enum) pitch_delay 2
+            microcode = Container: 
+                Delay_1_Coarse = 0
+                Delay_1_Fine = 0
+                Feedback_1 = 0
+                Delay_2_Coarse = 26
+                Delay_2_Fine = 0
+                Feedback_2 = 0
+                Delay_3_Coarse = 31
+                Delay_3_Fine = 0
+                Pitch_Base/Select = 2
+                Pitch_Interval = 35
+                Pitch_Adjust = 64
+                Decay_Time = 2
+                Treble_Decay = 9
+                Bass_Multiply = 19
+                Size = 41
+                Diffusion = 73
+                High_Cut_Filter = 11
+                Low_Cut_Filter = 0
+                Reverb_Balance = 127
+                Output_Balance = 64
+                Output_Level = 127
+                Input_Level = 109
+                LFO_Rate = 42
+            name = 'Octave Room' (total 11)
+            reserved = 0
+            knob_dest = 11
+            patches = ListContainer: 
+                Container: 
+                    source = 6
+                    thres = 25
+                    dest = 6
+                    scale = 0
+                    offset = 0
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 5
+                    scale = 28
+                    offset = 10
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 16
+                    scale = 102
+                    offset = 117
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+            packed_checksum = 125

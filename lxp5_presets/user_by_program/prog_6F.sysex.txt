@@ -1,0 +1,64 @@
+Container: 
+    midi = Container: 
+        type = 1
+        channel = 0
+    blob = Container: 
+        Register = 111
+        data = Container: 
+            packed_length = 57
+            packed_data = b'\x01\x00@\x19\x10n%\x00\x00\x00\x00T\n\x07\x17\x00'... (truncated, total 57)
+            algo = Container: 
+                algo = (enum) delay_reverb 1
+            microcode = Container: 
+                Delay_1_Coarse = 0
+                Delay_1_Fine = 64
+                Feedback_1 = 25
+                Delay_2_Coarse = 16
+                Delay_2_Fine = 110
+                Feedback_2 = 37
+                Delay_3_Coarse = 0
+                Delay_3_Fine = 0
+                Pitch_Base/Select = 0
+                Pitch_Interval = 0
+                Pitch_Adjust = 84
+                Decay_Time = 10
+                Treble_Decay = 7
+                Bass_Multiply = 23
+                Size = 0
+                Diffusion = 0
+                High_Cut_Filter = 5
+                Low_Cut_Filter = 0
+                Reverb_Balance = 87
+                Output_Balance = 64
+                Output_Level = 127
+                Input_Level = 98
+                LFO_Rate = 0
+            name = 'Glass House' (total 11)
+            reserved = 32
+            knob_dest = 11
+            patches = ListContainer: 
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 12
+                    scale = 15
+                    offset = 19
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 16
+                    scale = 19
+                    offset = 25
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 13
+                    scale = 2
+                    offset = 2
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+            packed_checksum = 7

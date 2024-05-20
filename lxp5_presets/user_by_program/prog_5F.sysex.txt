@@ -1,0 +1,64 @@
+Container: 
+    midi = Container: 
+        type = 1
+        channel = 0
+    blob = Container: 
+        Register = 95
+        data = Container: 
+            packed_length = 57
+            packed_data = b'\x02\x00\x00;^\x00\\3\x00\x02\x0cF\x05\r\x13\x11'... (truncated, total 57)
+            algo = Container: 
+                algo = (enum) pitch_delay 2
+            microcode = Container: 
+                Delay_1_Coarse = 0
+                Delay_1_Fine = 0
+                Feedback_1 = 59
+                Delay_2_Coarse = 94
+                Delay_2_Fine = 0
+                Feedback_2 = 92
+                Delay_3_Coarse = 51
+                Delay_3_Fine = 0
+                Pitch_Base/Select = 2
+                Pitch_Interval = 12
+                Pitch_Adjust = 70
+                Decay_Time = 5
+                Treble_Decay = 13
+                Bass_Multiply = 19
+                Size = 17
+                Diffusion = 73
+                High_Cut_Filter = 14
+                Low_Cut_Filter = 2
+                Reverb_Balance = 119
+                Output_Balance = 17
+                Output_Level = 127
+                Input_Level = 58
+                LFO_Rate = 42
+            name = 'Bent       ' (total 11)
+            reserved = 69
+            knob_dest = 11
+            patches = ListContainer: 
+                Container: 
+                    source = 65
+                    thres = 0
+                    dest = 3
+                    scale = 108
+                    offset = 118
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+            packed_checksum = 81

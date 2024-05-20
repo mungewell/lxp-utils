@@ -1,0 +1,64 @@
+Container: 
+    midi = Container: 
+        type = 1
+        channel = 0
+    blob = Container: 
+        Register = 77
+        data = Container: 
+            packed_length = 57
+            packed_data = b'\x02\x02\x00]\x1e\x00C\x00\x00\x01\x0c>\n\x00\x15\x19'... (truncated, total 57)
+            algo = Container: 
+                algo = (enum) pitch_delay 2
+            microcode = Container: 
+                Delay_1_Coarse = 2
+                Delay_1_Fine = 0
+                Feedback_1 = 93
+                Delay_2_Coarse = 30
+                Delay_2_Fine = 0
+                Feedback_2 = 67
+                Delay_3_Coarse = 0
+                Delay_3_Fine = 0
+                Pitch_Base/Select = 1
+                Pitch_Interval = 12
+                Pitch_Adjust = 62
+                Decay_Time = 10
+                Treble_Decay = 0
+                Bass_Multiply = 21
+                Size = 25
+                Diffusion = 90
+                High_Cut_Filter = 15
+                Low_Cut_Filter = 0
+                Reverb_Balance = 14
+                Output_Balance = 93
+                Output_Level = 127
+                Input_Level = 67
+                LFO_Rate = 110
+            name = 'Drum Teel  ' (total 11)
+            reserved = 77
+            knob_dest = 5
+            patches = ListContainer: 
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+            packed_checksum = 21

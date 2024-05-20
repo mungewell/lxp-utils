@@ -1,0 +1,64 @@
+Container: 
+    midi = Container: 
+        type = 1
+        channel = 0
+    blob = Container: 
+        Register = 44
+        data = Container: 
+            packed_length = 57
+            packed_data = b'\x02\x0c\x00\x00\x00\x11Q\x14\x00\x00\x0c@\x06\x0b\x12\x18'... (truncated, total 57)
+            algo = Container: 
+                algo = (enum) pitch_delay 2
+            microcode = Container: 
+                Delay_1_Coarse = 12
+                Delay_1_Fine = 0
+                Feedback_1 = 0
+                Delay_2_Coarse = 0
+                Delay_2_Fine = 17
+                Feedback_2 = 81
+                Delay_3_Coarse = 20
+                Delay_3_Fine = 0
+                Pitch_Base/Select = 0
+                Pitch_Interval = 12
+                Pitch_Adjust = 64
+                Decay_Time = 6
+                Treble_Decay = 11
+                Bass_Multiply = 18
+                Size = 24
+                Diffusion = 0
+                High_Cut_Filter = 15
+                Low_Cut_Filter = 0
+                Reverb_Balance = 14
+                Output_Balance = 46
+                Output_Level = 127
+                Input_Level = 89
+                LFO_Rate = 19
+            name = 'Roto Slap  ' (total 11)
+            reserved = 58
+            knob_dest = 42
+            patches = ListContainer: 
+                Container: 
+                    source = 70
+                    thres = 0
+                    dest = 19
+                    scale = 18
+                    offset = 20
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 22
+                    scale = 21
+                    offset = 19
+                Container: 
+                    source = 70
+                    thres = 0
+                    dest = 4
+                    scale = 18
+                    offset = 30
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 57
+                    scale = 5
+                    offset = 4
+            packed_checksum = 60

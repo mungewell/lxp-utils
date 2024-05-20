@@ -1,0 +1,128 @@
+prog_00:Large 2    
+prog_01:Drk Room   
+prog_02:Grow Siz   
+prog_03:Dead Rm    
+prog_04:Big Room   
+prog_05:Chamber    
+prog_06:SmallRm2   
+prog_07:Close Up   
+prog_08:WobblVrb   
+prog_09:Movin'It   
+prog_0A:BackWall   
+prog_0B:SlapRm2    
+prog_0C:Dly Veco   
+prog_0D:Res.Verb   
+prog_0E:Verbus     
+prog_0F:DarkHall   
+prog_10:Echo Delay 
+prog_11:Stereo Echo
+prog_12:Slap Echo  
+prog_13:Mid Slap   
+prog_14:Stereo Slap
+prog_15:DiffuseEcho
+prog_16:Image Delay
+prog_17:BounceDelay
+prog_18:Bounce Loop
+prog_19:AmbientLoop
+prog_1A:Echo Loop  
+prog_1B:FilterDelay
+prog_1C:Robot 1    
+prog_1D:Robot 2    
+prog_1E:Short Delay
+prog_1F:Long Delay 
+prog_20:Chorus     
+prog_21:Amb Image  
+prog_22:Combience  
+prog_23:AmbntDetune
+prog_24:Dry Detune 
+prog_25:Slap Detune
+prog_26:Res Sweep  
+prog_27:DiffSweep  
+prog_28:Slap Sweep 
+prog_29:Echo Detune
+prog_2A:Step Detune
+prog_2B:RotoMotion 
+prog_2C:Roto Slap  
+prog_2D:Slow Res   
+prog_2E:Slap Flange
+prog_2F:DiffFlange 
+prog_30:StrangeRoom
+prog_31:Down Room  
+prog_32:Amb Slap   
+prog_33:Slow Rise  
+prog_34:Slow Fall  
+prog_35:Octave Room
+prog_36:Zoom       
+prog_37:Bounce 4th 
+prog_38:Slap Room  
+prog_39:Echo Room  
+prog_3A:Dark Closet
+prog_3B:Small Brite
+prog_3C:MediumBrite
+prog_3D:MediumDark 
+prog_3E:LargeBright
+prog_3F:Huge Room  
+prog_40:Doppler Rm 
+prog_41:Knots      
+prog_42:Octback    
+prog_43:Pan Dlyvrb 
+prog_44:After Pitch
+prog_45:Velo Delay 
+prog_46:Shimmer    
+prog_47:Little Pan 
+prog_48:Pan Echo   
+prog_49:Spread Echo
+prog_4A:Trade Off  
+prog_4B:Veloverb   
+prog_4C:Plate Chrs 
+prog_4D:Drum Teel  
+prog_4E:Infinite Rv
+prog_4F:Infin Loops
+prog_50:ClockDecend
+prog_51:ClockSlap  
+prog_52:ClkdRvbFlng
+prog_53:ShimmerCave
+prog_54:VibrtoScale
+prog_55:Rand Flange
+prog_56:MystryPitch
+prog_57:2 Oct Delay
+prog_58:DopplrFlang
+prog_59:Stadium    
+prog_5A:Vibra Verb 
+prog_5B:Wait Frash 
+prog_5C:Chromatic  
+prog_5D:Doppler Mod
+prog_5E:Dk ChrsVerb
+prog_5F:Bent       
+prog_60:Animal Orch
+prog_61:Stavid     
+prog_62:Note Spread
+prog_63:Mdelay Drum
+prog_64:Sdelay Drum
+prog_65:Oct Vibrato
+prog_66:Sha{y Five 
+prog_67:Ganged Echo
+prog_68:Ambecho    
+prog_69:Jaco Chorus
+prog_6A:Dounle Up  
+prog_6B:Canyon Echo
+prog_6C:Spiral Echo
+prog_6D:Ho Drum    
+prog_6E:Bodysnatch 
+prog_6F:Glass House
+prog_70:Velo Ripple
+prog_71:Keycend    
+prog_72:Key Dlyverb
+prog_73:Suspdl Loop
+prog_74:Note Flange
+prog_75:AfterFlange
+prog_76:PhaseFlange
+prog_77:Phase Pedal
+prog_78:Huge Fourth
+prog_79:Upper Noted
+prog_7A:Detune Loop
+prog_7B:Sky        
+prog_7C:Phasecho   
+prog_7D:Fbk Sampler
+prog_7E:Amb Sampler
+prog_7F:Sampler    

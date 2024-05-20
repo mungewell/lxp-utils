@@ -1,0 +1,64 @@
+Container: 
+    midi = Container: 
+        type = 1
+        channel = 0
+    blob = Container: 
+        Register = 94
+        data = Container: 
+            packed_length = 57
+            packed_data = b'\x01\x00\x00\x16M\x00e\x13\x00\x00\r=\n\x04\x17\x11'... (truncated, total 57)
+            algo = Container: 
+                algo = (enum) delay_reverb 1
+            microcode = Container: 
+                Delay_1_Coarse = 0
+                Delay_1_Fine = 0
+                Feedback_1 = 22
+                Delay_2_Coarse = 77
+                Delay_2_Fine = 0
+                Feedback_2 = 101
+                Delay_3_Coarse = 19
+                Delay_3_Fine = 0
+                Pitch_Base/Select = 0
+                Pitch_Interval = 13
+                Pitch_Adjust = 61
+                Decay_Time = 10
+                Treble_Decay = 4
+                Bass_Multiply = 23
+                Size = 17
+                Diffusion = 95
+                High_Cut_Filter = 11
+                Low_Cut_Filter = 8
+                Reverb_Balance = 0
+                Output_Balance = 59
+                Output_Level = 127
+                Input_Level = 127
+                LFO_Rate = 68
+            name = 'Dk ChrsVerb' (total 11)
+            reserved = 32
+            knob_dest = 5
+            patches = ListContainer: 
+                Container: 
+                    source = 70
+                    thres = 12
+                    dest = 18
+                    scale = 34
+                    offset = 54
+                Container: 
+                    source = 70
+                    thres = 75
+                    dest = 1
+                    scale = 105
+                    offset = 8
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 3
+                    scale = 61
+                    offset = 63
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+            packed_checksum = 95

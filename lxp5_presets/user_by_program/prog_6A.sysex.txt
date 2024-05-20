@@ -1,0 +1,64 @@
+Container: 
+    midi = Container: 
+        type = 1
+        channel = 0
+    blob = Container: 
+        Register = 106
+        data = Container: 
+            packed_length = 57
+            packed_data = b"\x02\x00\x00'\x02p\x16\x02@\x02#;\x04\r\x1f\x03"... (truncated, total 57)
+            algo = Container: 
+                algo = (enum) pitch_delay 2
+            microcode = Container: 
+                Delay_1_Coarse = 0
+                Delay_1_Fine = 0
+                Feedback_1 = 39
+                Delay_2_Coarse = 2
+                Delay_2_Fine = 112
+                Feedback_2 = 22
+                Delay_3_Coarse = 2
+                Delay_3_Fine = 64
+                Pitch_Base/Select = 2
+                Pitch_Interval = 35
+                Pitch_Adjust = 59
+                Decay_Time = 4
+                Treble_Decay = 13
+                Bass_Multiply = 31
+                Size = 3
+                Diffusion = 91
+                High_Cut_Filter = 15
+                Low_Cut_Filter = 0
+                Reverb_Balance = 89
+                Output_Balance = 64
+                Output_Level = 100
+                Input_Level = 126
+                LFO_Rate = 60
+            name = 'Dounle Up  ' (total 11)
+            reserved = 32
+            knob_dest = 42
+            patches = ListContainer: 
+                Container: 
+                    source = 69
+                    thres = 8
+                    dest = 5
+                    scale = 13
+                    offset = 3
+                Container: 
+                    source = 70
+                    thres = 54
+                    dest = 10
+                    scale = 126
+                    offset = 0
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+            packed_checksum = 95

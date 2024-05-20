@@ -1,0 +1,64 @@
+Container: 
+    midi = Container: 
+        type = 1
+        channel = 0
+    blob = Container: 
+        Register = 96
+        data = Container: 
+            packed_length = 57
+            packed_data = b'\x02\x00\x00\x1a)\x00\\3\x00\x02\x07\x7f\x07\x00\x1f\x11'... (truncated, total 57)
+            algo = Container: 
+                algo = (enum) pitch_delay 2
+            microcode = Container: 
+                Delay_1_Coarse = 0
+                Delay_1_Fine = 0
+                Feedback_1 = 26
+                Delay_2_Coarse = 41
+                Delay_2_Fine = 0
+                Feedback_2 = 92
+                Delay_3_Coarse = 51
+                Delay_3_Fine = 0
+                Pitch_Base/Select = 2
+                Pitch_Interval = 7
+                Pitch_Adjust = 127
+                Decay_Time = 7
+                Treble_Decay = 0
+                Bass_Multiply = 31
+                Size = 17
+                Diffusion = 73
+                High_Cut_Filter = 1
+                Low_Cut_Filter = 0
+                Reverb_Balance = 119
+                Output_Balance = 59
+                Output_Level = 127
+                Input_Level = 44
+                LFO_Rate = 127
+            name = 'Animal Orch' (total 11)
+            reserved = 69
+            knob_dest = 3
+            patches = ListContainer: 
+                Container: 
+                    source = 64
+                    thres = 0
+                    dest = 12
+                    scale = 32
+                    offset = 52
+                Container: 
+                    source = 64
+                    thres = 0
+                    dest = 10
+                    scale = 64
+                    offset = 64
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 13
+                    scale = 62
+                    offset = 40
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 11
+                    scale = 11
+                    offset = 7
+            packed_checksum = 3

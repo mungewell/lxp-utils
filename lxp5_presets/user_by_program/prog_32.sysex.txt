@@ -1,0 +1,64 @@
+Container: 
+    midi = Container: 
+        type = 1
+        channel = 0
+    blob = Container: 
+        Register = 50
+        data = Container: 
+            packed_length = 57
+            packed_data = b'\x02\x00\x00\x00\x12\x00\x083\x00\x03\x00B\x08\t\x13\x1d'... (truncated, total 57)
+            algo = Container: 
+                algo = (enum) pitch_delay 2
+            microcode = Container: 
+                Delay_1_Coarse = 0
+                Delay_1_Fine = 0
+                Feedback_1 = 0
+                Delay_2_Coarse = 18
+                Delay_2_Fine = 0
+                Feedback_2 = 8
+                Delay_3_Coarse = 51
+                Delay_3_Fine = 0
+                Pitch_Base/Select = 3
+                Pitch_Interval = 0
+                Pitch_Adjust = 66
+                Decay_Time = 8
+                Treble_Decay = 9
+                Bass_Multiply = 19
+                Size = 29
+                Diffusion = 73
+                High_Cut_Filter = 13
+                Low_Cut_Filter = 0
+                Reverb_Balance = 91
+                Output_Balance = 64
+                Output_Level = 127
+                Input_Level = 98
+                LFO_Rate = 0
+            name = 'Amb Slap   ' (total 11)
+            reserved = 0
+            knob_dest = 11
+            patches = ListContainer: 
+                Container: 
+                    source = 65
+                    thres = 34
+                    dest = 10
+                    scale = 12
+                    offset = 127
+                Container: 
+                    source = 65
+                    thres = 0
+                    dest = 18
+                    scale = 24
+                    offset = 95
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 3
+                    scale = 114
+                    offset = 111
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+            packed_checksum = 59

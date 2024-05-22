@@ -1,0 +1,64 @@
+Container: 
+    midi = Container: 
+        type = 1
+        channel = 0
+    blob = Container: 
+        register = 80
+        packed_length = 57
+        packed_data = b'\x02\x00\x00%\x04\x00E\x00\x00\x02\x0b6\x06\x0f\x1d\x05'... (truncated, total 57)
+        data = Container: 
+            algo = Container: 
+                algo = (enum) pitch_delay 2
+            microcode = Container: 
+                Delay_1_Coarse = 0
+                Delay_1_Fine = 0
+                Feedback_1 = 37
+                Delay_2_Coarse = 4
+                Delay_2_Fine = 0
+                Feedback_2 = 69
+                Delay_3_Coarse = 0
+                Delay_3_Fine = 0
+                Pitch_Base/Select = 2
+                Pitch_Interval = 11
+                Pitch_Adjust = 54
+                Decay_Time = 6
+                Treble_Decay = 15
+                Bass_Multiply = 29
+                Size = 5
+                Diffusion = 48
+                High_Cut_Filter = 15
+                Low_Cut_Filter = 0
+                Reverb_Balance = 23
+                Output_Balance = 64
+                Output_Level = 112
+                Input_Level = 127
+                LFO_Rate = 42
+            name = 'ClockDecend' (total 11)
+            reserved = 32
+            knob_dest = 9
+            patches = ListContainer: 
+                Container: 
+                    source = 68
+                    thres = 0
+                    dest = 5
+                    scale = 10
+                    offset = 11
+                Container: 
+                    source = 68
+                    thres = 0
+                    dest = 5
+                    scale = 3
+                    offset = 3
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+        packed_checksum = 26

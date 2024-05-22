@@ -1,0 +1,64 @@
+Container: 
+    midi = Container: 
+        type = 1
+        channel = 0
+    blob = Container: 
+        register = 42
+        packed_length = 57
+        packed_data = b'\x02\x00\x00$\x07\x00\x000\x00\x02\x0c@\x06\x0b\x12\x18'... (truncated, total 57)
+        data = Container: 
+            algo = Container: 
+                algo = (enum) pitch_delay 2
+            microcode = Container: 
+                Delay_1_Coarse = 0
+                Delay_1_Fine = 0
+                Feedback_1 = 36
+                Delay_2_Coarse = 7
+                Delay_2_Fine = 0
+                Feedback_2 = 0
+                Delay_3_Coarse = 48
+                Delay_3_Fine = 0
+                Pitch_Base/Select = 2
+                Pitch_Interval = 12
+                Pitch_Adjust = 64
+                Decay_Time = 6
+                Treble_Decay = 11
+                Bass_Multiply = 18
+                Size = 24
+                Diffusion = 0
+                High_Cut_Filter = 11
+                Low_Cut_Filter = 0
+                Reverb_Balance = 40
+                Output_Balance = 46
+                Output_Level = 127
+                Input_Level = 89
+                LFO_Rate = 46
+            name = 'Step Detune' (total 11)
+            reserved = 50
+            knob_dest = 42
+            patches = ListContainer: 
+                Container: 
+                    source = 70
+                    thres = 0
+                    dest = 19
+                    scale = 17
+                    offset = 31
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 6
+                    scale = 16
+                    offset = 4
+                Container: 
+                    source = 70
+                    thres = 0
+                    dest = 10
+                    scale = 0
+                    offset = 3
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 57
+                    scale = 5
+                    offset = 1
+        packed_checksum = 9

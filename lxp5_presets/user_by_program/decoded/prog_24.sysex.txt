@@ -1,0 +1,64 @@
+Container: 
+    midi = Container: 
+        type = 1
+        channel = 0
+    blob = Container: 
+        register = 36
+        packed_length = 57
+        packed_data = b'\x02\x00\x00\x00\x00\x004\x0e\x00\x02\x0c?\x08\x0b\x15\x18'... (truncated, total 57)
+        data = Container: 
+            algo = Container: 
+                algo = (enum) pitch_delay 2
+            microcode = Container: 
+                Delay_1_Coarse = 0
+                Delay_1_Fine = 0
+                Feedback_1 = 0
+                Delay_2_Coarse = 0
+                Delay_2_Fine = 0
+                Feedback_2 = 52
+                Delay_3_Coarse = 14
+                Delay_3_Fine = 0
+                Pitch_Base/Select = 2
+                Pitch_Interval = 12
+                Pitch_Adjust = 63
+                Decay_Time = 8
+                Treble_Decay = 11
+                Bass_Multiply = 21
+                Size = 24
+                Diffusion = 51
+                High_Cut_Filter = 15
+                Low_Cut_Filter = 1
+                Reverb_Balance = 0
+                Output_Balance = 89
+                Output_Level = 127
+                Input_Level = 89
+                LFO_Rate = 24
+            name = 'Dry Detune ' (total 11)
+            reserved = 0
+            knob_dest = 22
+            patches = ListContainer: 
+                Container: 
+                    source = 70
+                    thres = 0
+                    dest = 19
+                    scale = 115
+                    offset = 127
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 6
+                    scale = 2
+                    offset = 0
+                Container: 
+                    source = 70
+                    thres = 0
+                    dest = 10
+                    scale = 2
+                    offset = 0
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 3
+                    scale = 2
+                    offset = 0
+        packed_checksum = 123

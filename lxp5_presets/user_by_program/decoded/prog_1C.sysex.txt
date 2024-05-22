@@ -1,0 +1,64 @@
+Container: 
+    midi = Container: 
+        type = 1
+        channel = 0
+    blob = Container: 
+        register = 28
+        packed_length = 57
+        packed_data = b'\x02\x01\x00z\x08\x00\x00\x00\x00\x00\x0c@\x01\x0b\x0f\x18'... (truncated, total 57)
+        data = Container: 
+            algo = Container: 
+                algo = (enum) pitch_delay 2
+            microcode = Container: 
+                Delay_1_Coarse = 1
+                Delay_1_Fine = 0
+                Feedback_1 = 122
+                Delay_2_Coarse = 8
+                Delay_2_Fine = 0
+                Feedback_2 = 0
+                Delay_3_Coarse = 0
+                Delay_3_Fine = 0
+                Pitch_Base/Select = 0
+                Pitch_Interval = 12
+                Pitch_Adjust = 64
+                Decay_Time = 1
+                Treble_Decay = 11
+                Bass_Multiply = 15
+                Size = 24
+                Diffusion = 100
+                High_Cut_Filter = 10
+                Low_Cut_Filter = 0
+                Reverb_Balance = 33
+                Output_Balance = 47
+                Output_Level = 127
+                Input_Level = 96
+                LFO_Rate = 7
+            name = 'Robot 1    ' (total 11)
+            reserved = 34
+            knob_dest = 42
+            patches = ListContainer: 
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 1
+                    scale = 16
+                    offset = 8
+                Container: 
+                    source = 70
+                    thres = 0
+                    dest = 19
+                    scale = 13
+                    offset = 25
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 3
+                    scale = 14
+                    offset = 7
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 2
+                    scale = 123
+                    offset = 125
+        packed_checksum = 68

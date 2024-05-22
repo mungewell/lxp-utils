@@ -1,0 +1,64 @@
+Container: 
+    midi = Container: 
+        type = 1
+        channel = 0
+    blob = Container: 
+        register = 73
+        packed_length = 57
+        packed_data = b'\x02#\x00"\x08\x00@\x00\x00\x00\rR\t\x0f\x0c\x19'... (truncated, total 57)
+        data = Container: 
+            algo = Container: 
+                algo = (enum) pitch_delay 2
+            microcode = Container: 
+                Delay_1_Coarse = 35
+                Delay_1_Fine = 0
+                Feedback_1 = 34
+                Delay_2_Coarse = 8
+                Delay_2_Fine = 0
+                Feedback_2 = 64
+                Delay_3_Coarse = 0
+                Delay_3_Fine = 0
+                Pitch_Base/Select = 0
+                Pitch_Interval = 13
+                Pitch_Adjust = 82
+                Decay_Time = 9
+                Treble_Decay = 15
+                Bass_Multiply = 12
+                Size = 25
+                Diffusion = 73
+                High_Cut_Filter = 15
+                Low_Cut_Filter = 0
+                Reverb_Balance = 119
+                Output_Balance = 59
+                Output_Level = 123
+                Input_Level = 67
+                LFO_Rate = 95
+            name = 'Spread Echo' (total 11)
+            reserved = 32
+            knob_dest = 11
+            patches = ListContainer: 
+                Container: 
+                    source = 64
+                    thres = 24
+                    dest = 19
+                    scale = 53
+                    offset = 19
+                Container: 
+                    source = 70
+                    thres = 25
+                    dest = 4
+                    scale = 115
+                    offset = 122
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+                Container: 
+                    source = 127
+                    thres = 0
+                    dest = 127
+                    scale = 0
+                    offset = 0
+        packed_checksum = 122

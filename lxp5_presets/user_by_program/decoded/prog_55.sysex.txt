@@ -1,0 +1,64 @@
+Container: 
+    midi = Container: 
+        type = 1
+        channel = 0
+    blob = Container: 
+        register = 85
+        packed_length = 57
+        packed_data = b'\x01\x01@M\x04\x008\x00q\x01\x0e=\x06\x0e\x18\n'... (truncated, total 57)
+        data = Container: 
+            algo = Container: 
+                algo = (enum) delay_reverb 1
+            microcode = Container: 
+                Delay_1_Coarse = 1
+                Delay_1_Fine = 64
+                Feedback_1 = 77
+                Delay_2_Coarse = 4
+                Delay_2_Fine = 0
+                Feedback_2 = 56
+                Delay_3_Coarse = 0
+                Delay_3_Fine = 113
+                Pitch_Base/Select = 1
+                Pitch_Interval = 14
+                Pitch_Adjust = 61
+                Decay_Time = 6
+                Treble_Decay = 14
+                Bass_Multiply = 24
+                Size = 10
+                Diffusion = 25
+                High_Cut_Filter = 15
+                Low_Cut_Filter = 0
+                Reverb_Balance = 56
+                Output_Balance = 64
+                Output_Level = 127
+                Input_Level = 127
+                LFO_Rate = 76
+            name = 'Rand Flange' (total 11)
+            reserved = 32
+            knob_dest = 22
+            patches = ListContainer: 
+                Container: 
+                    source = 70
+                    thres = 4
+                    dest = 1
+                    scale = 109
+                    offset = 97
+                Container: 
+                    source = 70
+                    thres = 50
+                    dest = 2
+                    scale = 125
+                    offset = 127
+                Container: 
+                    source = 70
+                    thres = 8
+                    dest = 5
+                    scale = 9
+                    offset = 14
+                Container: 
+                    source = 69
+                    thres = 0
+                    dest = 47
+                    scale = 1
+                    offset = 1
+        packed_checksum = 63

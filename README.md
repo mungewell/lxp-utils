@@ -1,6 +1,21 @@
 # lxp-utils
 
+Manipulate the LXP5 patches,
+```
+$ python3 lxp5.py -h
+Usage: lxp5.py [options] FILENAME
 
+Options:
+  -h, --help            show this help message and exit
+  -d, --dump            dump configuration to text
+  -p PATCH, --patch=PATCH
+                        convert to a single patch (1-128)
+  -i INDEX, --index=INDEX
+                        index of patch in multi (1-128)
+  -w, --write           write configuration back to file
+```
+
+or the LXP1 patches...
 ```
 $ python3 lxp1.py -d presets/hallb.bin
 Container: 

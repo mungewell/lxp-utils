@@ -7,6 +7,7 @@
 # https://github.com/construct/construct
 
 from construct import *
+import sys
 
 # Midi is 7bit stuffed - convert each bytes (max 0x7F)
 class Midi2u(Adapter):
@@ -14,6 +15,14 @@ class Midi2u(Adapter):
         return((obj & 0x7f) + ((obj & 0x7f00) >> 1))
     def _encode(self, obj, context, path):
         return((obj & 0x7f) + ((obj & 0x3f80) << 1))
+
+Algo = Struct(
+    "algo" / Enum(Byte,
+        delay_reverb = 1,
+        pitch_delay = 2,
+        bypass = 3,
+        ),
+    )
 
 Microcode = Struct(
     "Delay_1_Coarse" / Byte,
@@ -41,15 +50,7 @@ Microcode = Struct(
     "LFO_Rate" / Byte,
     )
 
-Algo = Struct(
-    "algo" / Enum(Byte,
-        delay_reverb = 1,
-        pitch_delay = 2,
-        bypass = 3,
-        ),
-    )
-
-Knob = Struct(
+Knobs = Struct(
     "Delay_0_Coarse_Edit_Knob" / Byte,
     "Delay_0_Fine_Edit_Knob" / Byte,
     "Reserved_0" / Byte,
@@ -68,13 +69,11 @@ Patch = Struct(
     "offset" / Byte,
     )
 
-CurrentPacked = Struct(
-    "packed_length" / Byte,        # expect 0x5e
-    "packed_data" / Peek(Bytes(this.packed_length)),
-
+Current = Struct(
     "algo" / Algo,
     "microcode" / Microcode,
-    "knobs" / Knob,
+
+    "knobs" / Knobs,
 
     "name" / PaddedString(11, "ascii"),
     "reserved" / Byte,
@@ -88,38 +87,15 @@ CurrentPacked = Struct(
     "write_protect" / Byte,
     "global_patch_en" / Byte,
     "global_patches" / Bytes(23),
-
-    "packed_checksum" / Checksum(Byte,
-        lambda data: sum(data) & 0x7f,
-        this.packed_data
-        ),
 )
 
-SinglePacked = Struct(
-    "packed_length" / Byte,        # expect 0x39
-    "packed_data" / Peek(Bytes(this.packed_length)),
-
+Single = Struct(
     "algo" / Algo,
     "microcode" / Microcode,
     "name" / PaddedString(11, "ascii"),
     "reserved" / Byte,
     "knob_dest" / Byte,
     "patches" / Array(4, Patch),
-
-    "packed_checksum" / Checksum(Byte,
-        lambda data: sum(data) & 0x7f,
-        this.packed_data
-        ),
-)
-
-MultiPacked = Struct(
-    "packed_length" / Midi2u(Short),    # expected 0x3900 in 7-bit = 7296 bytes
-    "packed_data" / Bytes(this.packed_length),
-
-    "packed_checksum" / Checksum(Byte,
-        lambda data: sum(data) & 0x7f,
-        this.packed_data
-        ),
 )
 
 LXP5 = Struct(
@@ -133,14 +109,33 @@ LXP5 = Struct(
     "blob" / Switch(this.midi.type,
     {
         0 : "current" / Struct(
-            "data" / CurrentPacked,
+            "packed_length" / Byte,             # expect 0x5e
+            "packed_data" / Peek(Bytes(this.packed_length)),
+            "data" / Current,
+            "packed_checksum" / Checksum(Byte,
+                lambda data: sum(data) & 0x7f,
+                this.packed_data
+                ),
         ),
-        1 : "register" / Struct(
-            "Register" / Byte,
-            "data" / SinglePacked,
+        1 : "single" / Struct(
+            "register" / Byte,
+            "packed_length" / Byte,             # expect 0x39
+            "packed_data" / Peek(Bytes(this.packed_length)),
+            "data" / Single,
+            "packed_checksum" / Checksum(Byte,
+                lambda data: sum(data) & 0x7f,
+                this.packed_data
+                ),
         ),
         4 : "allregs" / Struct(
-            "data" / MultiPacked,
+            "packed_length" / Midi2u(Short),    # expected 0x3900 in 7-bit = 7296 bytes
+            "packed_data" / Peek(Bytes(this.packed_length)),
+
+            "array" / Array(128, Single),
+            "packed_checksum" / Checksum(Byte,
+                lambda data: sum(data) & 0x7f,
+                this.packed_data
+                ),
         ),
     }),
 
@@ -160,6 +155,12 @@ def main():
     parser.add_option("-d", "--dump",
         help="dump configuration to text",
         action="store_true", dest="dump")
+    parser.add_option("-p", "--patch",
+        help="convert to a single patch (1-128)",
+        type=int, default=0, dest="patch")
+    parser.add_option("-i", "--index",
+        help="index of patch in multi (1-128)",
+        type=int, default=0, dest="index")
     parser.add_option("-w", "--write",
         help="write configuration back to file",
         action="store_true", dest="write")
@@ -172,8 +173,7 @@ def main():
 
     binfile = open(args[0], "rb")
     if not binfile:
-        print("Unable to open file")
-        quit(0)
+        sys.exit("Unable to open file")
 
     if binfile:
         bindata = binfile.read()
@@ -185,15 +185,39 @@ def main():
         print(config)
 
     if options.write:
-        # assume the settings are changed, need to repack
+        if config['midi']['type'] == 0:
+            # processing 'current'
+            if not options.patch:
+                sys.exit("Must specify '--patch'")
+
+            config['midi']['type'] = 1
+            config['blob']['packed_data'] = Single.build(config['blob']['data'])
+            config['blob']['packed_length'] = len(config['blob']['packed_data'])
+
+        if config['midi']['type'] == 4:
+            # processing 'all regs'
+            if not options.patch:
+                sys.exit("Must specify '--patch'")
+            if not options.index:
+                sys.exit("Must specify '--index'")
+
+            config['midi']['type'] = 1
+            config['blob']['data'] = config['blob']['array'][options.index-1]
+            config['blob']['packed_data'] = Single.build(config['blob']['data'])
+            config['blob']['packed_length'] = len(config['blob']['packed_data'])
+
+        # overwrite register/patch number
+        if options.patch:
+            config['blob']['register'] = options.patch - 1
 
         binfile = open(args[0], "wb")
         if not binfile:
-            print("Unable to open file for writing")
-            quit(0)
+            sys.exit("Unable to open file for writing")
 
         if binfile:
+            # assume the settings are changed, need to repack
             binfile.write(LXP5.build(config))
+
             binfile.close()
 
 if __name__ == "__main__":

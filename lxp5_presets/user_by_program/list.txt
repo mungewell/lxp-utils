@@ -1,3 +1,5 @@
+User Bank 1 - Different from Rom
+--
 prog_00:Large 2    
 prog_01:Drk Room   
 prog_02:Grow Siz   
@@ -14,6 +16,9 @@ prog_0C:Dly Veco
 prog_0D:Res.Verb   
 prog_0E:Verbus     
 prog_0F:DarkHall   
+
+User Bank 2
+--
 prog_10:Echo Delay 
 prog_11:Stereo Echo
 prog_12:Slap Echo  
@@ -30,6 +35,9 @@ prog_1C:Robot 1
 prog_1D:Robot 2    
 prog_1E:Short Delay
 prog_1F:Long Delay 
+
+User Bank 3
+--
 prog_20:Chorus     
 prog_21:Amb Image  
 prog_22:Combience  
@@ -46,6 +54,9 @@ prog_2C:Roto Slap
 prog_2D:Slow Res   
 prog_2E:Slap Flange
 prog_2F:DiffFlange 
+
+User Bank 4
+--
 prog_30:StrangeRoom
 prog_31:Down Room  
 prog_32:Amb Slap   
@@ -62,6 +73,9 @@ prog_3C:MediumBrite
 prog_3D:MediumDark 
 prog_3E:LargeBright
 prog_3F:Huge Room  
+
+User Bank 5
+--
 prog_40:Doppler Rm 
 prog_41:Knots      
 prog_42:Octback    
@@ -78,6 +92,9 @@ prog_4C:Plate Chrs
 prog_4D:Drum Teel  
 prog_4E:Infinite Rv
 prog_4F:Infin Loops
+
+User Bank 6
+--
 prog_50:ClockDecend
 prog_51:ClockSlap  
 prog_52:ClkdRvbFlng
@@ -94,6 +111,9 @@ prog_5C:Chromatic
 prog_5D:Doppler Mod
 prog_5E:Dk ChrsVerb
 prog_5F:Bent       
+
+User Bank 7
+--
 prog_60:Animal Orch
 prog_61:Stavid     
 prog_62:Note Spread
@@ -110,6 +130,9 @@ prog_6C:Spiral Echo
 prog_6D:Ho Drum    
 prog_6E:Bodysnatch 
 prog_6F:Glass House
+
+User Bank 8
+--
 prog_70:Velo Ripple
 prog_71:Keycend    
 prog_72:Key Dlyverb
